@@ -1,5 +1,6 @@
 import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
+import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 
 export async function signup(req,res) {
     try {
@@ -43,16 +44,19 @@ export async function signup(req,res) {
             password: hashedPassword,
             username,
             image
-        })
+        });
 
+        generateTokenAndSetCookie(newUser._id, res);
         await newUser.save();
-
+        
         res.status(201).json({message:"Created User",
             user: {
                 ...newUser._doc,
                 password:""
             }
         })
+
+
 
     } catch (error) {
         console.log("Error in signup controller", error.message);
