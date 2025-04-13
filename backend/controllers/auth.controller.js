@@ -48,7 +48,7 @@ export async function signup(req,res) {
 
         generateTokenAndSetCookie(newUser._id, res);
         await newUser.save();
-        
+
         res.status(201).json({message:"Created User",
             user: {
                 ...newUser._doc,
@@ -65,9 +65,45 @@ export async function signup(req,res) {
 }
 
 export async function login(req,res) {
-    res.send("Login route");
+    try {
+        const {email, password} = req.body;
+
+        if(!email || !password) {
+            return res.status(400).json({message:"All fields are required"});
+        }
+
+        const user = await User.findOne({email: email});
+        if(!user) {
+            return res.status(404).json({message:"Invalid email or password"});
+        }
+
+        const isPasswordCorrect = await bcryptjs.compare(password, user.password);
+
+        if(!isPasswordCorrect) {
+            return res.status(400).json({message:"Invalid email or password"});
+        }
+
+        generateTokenAndSetCookie(user._id, res);
+
+        res.status(200).json({
+            success: true,
+            user: {
+                ...user._doc,
+                password:""
+            }
+        })
+    } catch (error) {
+        console.log("Error in signup controller", error.message);
+        res.status(500).json({message:"Internal server error"});
+    }
 }
 
 export async function logout(req,res) {
-    res.send("Logout route");
+    try {
+        res.clearCookie("jwt-netflix");
+        res.status(200).json({message: "Logout out successfuly"})
+    } catch (error) {
+        console.log("Error in signup controller", error.message);
+        res.status(500).json({message:"Internal server error"});
+    }
 }
