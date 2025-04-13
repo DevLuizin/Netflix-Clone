@@ -1,4 +1,5 @@
 import { User } from "../models/user.model.js";
+import bcryptjs from "bcryptjs";
 
 export async function signup(req,res) {
     try {
@@ -24,6 +25,9 @@ export async function signup(req,res) {
             return res.status(400).json({message:"Email already exists"})
         }
 
+        const salt = await bcryptjs.genSalt(10);
+        const hashedPassword = await bcryptjs.hash(password, salt);
+
         const existingUsername = await User.findOne({username:username})
 
         if (existingUsername) {
@@ -36,14 +40,19 @@ export async function signup(req,res) {
 
         const newUser = new User({
             email,
-            password,
+            password: hashedPassword,
             username,
             image
         })
 
         await newUser.save();
 
-        res.status(201).json({message:"Created User"})
+        res.status(201).json({message:"Created User",
+            user: {
+                ...newUser._doc,
+                password:""
+            }
+        })
 
     } catch (error) {
         console.log("Error in signup controller", error.message);
