@@ -1,10 +1,18 @@
 import express from 'express';
+
 import authRoutes from './routes/auth.route.js';
+import { ENV_VARS } from './config/envVars.js';
+import { connectDB } from './config/db.js';
 
 const app = express();
 
-app.use("/api/v1/auth", authRoutes)
+const PORT = ENV_VARS.PORT;
 
-app.listen(5000, () => {
-    console.log('Server starded at http://localhost:5000');
+app.use(express.json());
+
+app.use("/api/v1/auth", authRoutes);
+
+app.listen(PORT, () => {
+    console.log('Server starded at http://localhost:'+PORT);
+    connectDB();
 })
