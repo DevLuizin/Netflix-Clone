@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { Info, Play } from "lucide-react";
 import useGetTrendingContent from '../../hooks/useGetTrendingContent';
+import { ORIGINAL_IMG_BASE_URL } from '../../utils/constants';
 
 const HomeScreen = () => {
   const { trendingContent } = useGetTrendingContent();
@@ -13,7 +14,7 @@ const HomeScreen = () => {
       <Navbar />
 
       <img 
-        src="/extraction.jpg" 
+        src={ORIGINAL_IMG_BASE_URL + trendingContent?.backdrop_path} 
         alt="Imagem Hero"
         className='absolute top-0 left-0 w-full h-full object-cover z-0' 
       />
@@ -24,10 +25,16 @@ const HomeScreen = () => {
           <div className='bg-gradient-to-b from-black via-transparent to-transparent absolute w-full h-full top-0 left-0 z-10'/>
 
           <div className='max-w-2xl z-30'>
-            <h1 className='mt-4 text-6xl font-extrabold text-balance'>Resgate</h1>
-            <p className='mt-2 text-lg'>2020 | 16+</p>
+            <h1 className='mt-4 text-6xl font-extrabold text-balance'>
+              {trendingContent?.title || trendingContent?.name}
+            </h1>
+            <p className='mt-2 text-lg'>
+              { trendingContent?.release_date?.split("-")[0] || trendingContent?.first_air_date?.split("-")[0]}{" "}
+              |
+              {trendingContent?.adult ? " +18" : " Livre"}  
+            </p>
             <p className='mt-4 text-lg'>
-              Em Bangladesh, o mercenário Tyler Rake luta para sobreviver durante uma missão para resgatar o filho de um chefão do crime.
+              {trendingContent?.overview.length > 200 ? trendingContent?.overview.slice(0, 200) + "..." : trendingContent?.overview}
             </p>
           </div>
 
