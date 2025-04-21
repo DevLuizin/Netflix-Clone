@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { LogOut, Menu, Search } from 'lucide-react';
+
 import { useAuthStore } from '../store/authUser';
 import { useContentStore } from '../store/content';
 
@@ -53,12 +53,18 @@ const Navbar = () => {
                 <div className='w-full sm:hidden mt-4 z-50 bg-black border rounded border-gray-800'>
                     <Link to={"/"}
                     className='block hover:underline p-2'
-                    onClick={toggleMobileMenu}>
+                    onClick={() => {
+                        setContentType("movie");
+                        setTimeout(() => toggleMobileMenu(), 0);
+                    }}>
                         Filmes
                     </Link>
                     <Link to={"/"}
                     className='block hover:underline p-2'
-                    onClick={toggleMobileMenu}>
+                    onClick={() => {
+                        setContentType("tv");
+                        setTimeout(() => toggleMobileMenu(), 0);
+                    }}>
                         Séries
                     </Link>
                     <Link to={"/history"}
