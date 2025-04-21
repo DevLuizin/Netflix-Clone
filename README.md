@@ -52,13 +52,13 @@
 ## 📸 Capturas de Tela
 
 <p align="center">
-    <img src="/Frontend/public/hero-screenshot.png" alt="Página Inicial" width="300" /> &nbsp;
-    <img src="/Frontend/public/home-screenshot.png" alt="Tela Principal" width="300" /> &nbsp;
-    <img src="/Frontend/public/signup-screenshot.png" alt="Tela Inscreva-se" width="300" /> &nbsp;
-    <img src="/Frontend/public/login-screenshot.png" alt="Tela Login" width="300" /> &nbsp;
-    <img src="/Frontend/public/watch-screenshot.png" alt="Assistir Trailer" width="300" /> &nbsp;
-    <img src="/Frontend/public/watch2-screenshot.png" alt="Trailer Continuado" width="300" /> &nbsp;
-    <img src="/Frontend/public/watch3-screenshot.png" alt="Trailer - Similares" width="300" /> 
+    <img src="/frontend/public/hero-screenshot.png" alt="Página Inicial" width="300" /> &nbsp;
+    <img src="/frontend/public/home-screenshot.png" alt="Tela Principal" width="300" /> &nbsp;
+    <img src="/frontend/public/signup-screenshot.png" alt="Tela Inscreva-se" width="300" /> &nbsp;
+    <img src="/frontend/public/login-screenshot.png" alt="Tela Login" width="300" /> &nbsp;
+    <img src="/frontend/public/watch-screenshot.png" alt="Assistir Trailer" width="300" /> &nbsp;
+    <img src="/frontend/public/watch2-screenshot.png" alt="Trailer Continuado" width="300" /> &nbsp;
+    <img src="/frontend/public/watch3-screenshot.png" alt="Trailer - Similares" width="300" /> 
 </p>
 
 ---
@@ -124,4 +124,4 @@ Inspirado também neste vídeo do canal Codelândia:
 
 ## 🧑‍💻 Autor
 
-Feito por **Luizin**.
+Feito por **Luiz Carlos Caetité**.
