@@ -53,9 +53,9 @@
 
 <p align="center">
     <img src="/frontend/public/hero-screenshot.png" alt="Página Inicial" width="300" /> &nbsp;
-    <img src="/frontend/public/home-screenshot.png" alt="Tela Principal" width="300" /> &nbsp;
     <img src="/frontend/public/signup-screenshot.png" alt="Tela Inscreva-se" width="300" /> &nbsp;
     <img src="/frontend/public/login-screenshot.png" alt="Tela Login" width="300" /> &nbsp;
+    <img src="/frontend/public/home-screenshot.png" alt="Tela Principal" width="300" /> &nbsp;
     <img src="/frontend/public/watch-screenshot.png" alt="Assistir Trailer" width="300" /> &nbsp;
     <img src="/frontend/public/watch2-screenshot.png" alt="Trailer Continuado" width="300" /> &nbsp;
     <img src="/frontend/public/watch3-screenshot.png" alt="Trailer - Similares" width="300" /> 
