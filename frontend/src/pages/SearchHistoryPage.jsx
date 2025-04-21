@@ -29,9 +29,9 @@ const SearchHistoryPage = () => {
     try {
       await axios.delete(`/api/v1/search/history/${entry.id}`)
       setSearchHistory(searchHistory.filter((item) => item.id !== entry.id));
+      toast.success("Histórico de pesquisa deletado com sucesso!");
     } catch (error) {
       toast.error("Erro ao deletar histórico de pesquisa");
-      console.log(error.message);
     }
   };
 
