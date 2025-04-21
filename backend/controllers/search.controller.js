@@ -21,8 +21,7 @@ export async function searchPerson(req, res) {
                 }
             }
         })
-
-        res.status(200).json({content: response.results});
+        return res.status(200).json({content: response.results});
     } catch (error) {
         console.log("Error in searchPerson controler: ", error.message);
         res.status(500).json({message: "Internal Server Error"})
@@ -42,7 +41,7 @@ export async function searchMovie(req, res) {
             $push:{
                 searchHistory:{
                     id:response.results[0].id,
-                    image:response.results[0].profile_path,
+                    image:response.results[0].poster_path,
                     title:response.results[0].title,
                     searchType:"movie",
                     createdAt:new Date(),
@@ -50,7 +49,7 @@ export async function searchMovie(req, res) {
             }
         })
 
-        res.status(200).json({content: response.results});
+        return res.status(200).json({content: response.results});
     } catch (error) {
         console.log("Error in searchMovie controler: ", error.message);
         res.status(500).json({message: "Internal Server Error"})
@@ -70,7 +69,7 @@ export async function searchTv(req, res) {
             $push:{
                 searchHistory:{
                     id:response.results[0].id,
-                    image:response.results[0].profile_path,
+                    image:response.results[0].poster_path,
                     title:response.results[0].name,
                     searchType:"tv",
                     createdAt:new Date(),
@@ -78,7 +77,7 @@ export async function searchTv(req, res) {
             }
         })
 
-        res.status(200).json({content: response.results});
+        return res.status(200).json({content: response.results});
     } catch (error) {
         console.log("Error in searchTv controler: ", error.message);
         res.status(500).json({message: "Internal Server Error"})
