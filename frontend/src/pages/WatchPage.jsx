@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useContentStore } from '../store/content'; 
 import Navbar from '../components/Navbar';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ReactPlayer from 'react-player';
 
 const WatchPage = () => {
     const { id } = useParams();
@@ -91,6 +92,25 @@ const WatchPage = () => {
                         </button>
                     </div>
                 )}
+
+                <div className='aspect-video mb-8 p-2 sm:px-10 md:px-32'>
+                    {trailers.length > 0 && (
+                        <ReactPlayer 
+                            controls={true}
+                            width={"100%"} 
+                            height={"70vh"}
+                            className='mx-auto overflow-hidden rounded-lg'
+                            url={`https://www.youtube.com/watch?v=${trailers[currentTrailerIdx].key}`}
+                        />
+                    )}
+
+                    {trailers?.length === 0 && (
+                        <h2 className='text-xl text-center mt-5'>
+                            Nenhum trailer disponível para{" "}
+                            <span className='font-bold text-red-600'>{content?.title || content?.name}</span> 😢
+                        </h2>
+                    )}
+                </div>
             </div>
         </div>
     );
