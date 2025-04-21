@@ -1,23 +1,25 @@
-import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useContentStore } from '../store/content'; 
-import Navbar from '../components/Navbar';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ReactPlayer from 'react-player';
+import axios from 'axios';
+import { useContentStore } from '../store/content'; 
+import { Link, useParams } from 'react-router-dom';
+
 import { ORIGINAL_IMG_BASE_URL, SMALL_IMG_BASE_URL } from '../utils/constants';
-import { Link } from 'react-router-dom';
-import { formatReleaseDate } from '../utils/dateFunction';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+import Navbar from '../components/Navbar';
 import WatchPageSkeleton from '../components/skeletons/WatchPageSkeleton';
+import { formatReleaseDate } from '../utils/dateFunction';
 
 const WatchPage = () => {
     const { id } = useParams();
+    const { contentType } = useContentStore();
+     
     const [trailers, setTrailers] = useState([]);
     const [currentTrailerIdx, setCurrentTrailerIdx] = useState(0);
     const [loading, setLoading] = useState(true); 
     const [content, setContent] = useState({});
     const [similarContent, setSimilarContent] = useState([]);
-    const { contentType } = useContentStore(); 
 
     const sliderRef = useRef(null);
 
