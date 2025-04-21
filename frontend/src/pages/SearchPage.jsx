@@ -1,11 +1,13 @@
-import React from 'react'
-import { useState } from 'react';
-import { useContentStore } from '../store/content';
-import Navbar from '../components/Navbar';
-import { Search } from 'lucide-react';
-import toast from 'react-hot-toast';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Search } from 'lucide-react';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+
+import { useContentStore } from '../store/content';
+
+import Navbar from '../components/Navbar';
+
 import { ORIGINAL_IMG_BASE_URL } from '../utils/constants';
 
 const SearchPage = () => {
